@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Darius E. Willits | Linux Systems Administrator</title>
+
+  <title>Darius Willits | IT & Network Engineering</title>
 
   <style>
     :root {
       --bg: #0b0f14;
       --surface: #121821;
-      --surface-light: #18212c;
+      --surface-hover: #18212c;
       --border: #273342;
       --text: #e8edf3;
       --muted: #9aa7b5;
       --accent: #6cb6ff;
+      --accent-soft: rgba(108, 182, 255, 0.08);
     }
 
     * {
@@ -27,89 +29,278 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
       line-height: 1.6;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .container {
-      width: min(1050px, calc(100% - 40px));
+      width: min(1100px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    header {
-      min-height: 70vh;
+    /* Navigation */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 15, 20, 0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      height: 68px;
       display: flex;
       align-items: center;
-      padding: 80px 0;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+
+    header {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
       border-bottom: 1px solid var(--border);
     }
 
     .hero {
-      max-width: 800px;
+      max-width: 850px;
+      padding: 100px 0;
     }
 
     .eyebrow {
+      display: inline-block;
       color: var(--accent);
-      font-size: 0.9rem;
+      background: var(--accent-soft);
+      border: 1px solid rgba(108, 182, 255, 0.18);
+      border-radius: 999px;
+      padding: 7px 13px;
+      margin-bottom: 24px;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 5.8rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      margin-bottom: 20px;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
     }
 
-    .title {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
+    .hero-title {
       color: var(--muted);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
       margin-bottom: 28px;
     }
 
-    .intro {
+    .hero-description {
       max-width: 720px;
       color: #c5ced8;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
+    .hero-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 17px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .button:hover {
+      background: var(--surface);
+      border-color: #40566d;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* Sections */
+
     main {
-      padding: 80px 0;
+      padding: 90px 0;
     }
 
     section {
-      margin-bottom: 90px;
+      margin-bottom: 110px;
     }
 
-    .section-heading {
+    .section-header {
       display: flex;
       align-items: baseline;
-      gap: 16px;
-      margin-bottom: 28px;
+      gap: 15px;
+      margin-bottom: 30px;
     }
 
     .section-number {
       color: var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
     }
 
     h2 {
-      font-size: 1.8rem;
-      letter-spacing: -0.02em;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
     }
 
-    .bio {
-      max-width: 800px;
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 60px;
+    }
+
+    .about-text {
       color: var(--muted);
       font-size: 1.05rem;
     }
+
+    .about-text p + p {
+      margin-top: 18px;
+    }
+
+    .career-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+    }
+
+    .career-card .label {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .career-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .career-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Experience */
+
+    .timeline {
+      border-left: 1px solid var(--border);
+      margin-left: 7px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 45px 35px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      left: -6px;
+      top: 5px;
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 3px;
+    }
+
+    .timeline-location {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .timeline-item ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timeline-item li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Skills */
 
     .skills {
       display: flex;
@@ -118,17 +309,19 @@
     }
 
     .skill {
+      padding: 9px 14px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 9px 14px;
       color: #d6dee7;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
+
+    /* Projects */
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -136,24 +329,37 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 26px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 28px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .project:hover {
       transform: translateY(-3px);
-      border-color: #3b5066;
+      border-color: #40566d;
+    }
+
+    .project.featured {
+      grid-column: span 2;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
     }
 
     .project h3 {
-      font-size: 1.15rem;
-      margin-bottom: 14px;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
     }
 
     .project p {
       color: var(--muted);
-      margin-bottom: 18px;
       font-size: 0.95rem;
+      margin-bottom: 20px;
     }
 
     .project ul {
@@ -173,8 +379,39 @@
       position: absolute;
       left: 0;
       color: var(--accent);
-      font-weight: bold;
     }
+
+    /* Education */
+
+    .education {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .education-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+    }
+
+    .education-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .education-card .school {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .education-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
 
     footer {
       border-top: 1px solid var(--border);
@@ -183,99 +420,324 @@
       font-size: 0.85rem;
     }
 
+    /* Responsive */
+
     @media (max-width: 800px) {
+      .about-grid,
+      .education {
+        grid-template-columns: 1fr;
+      }
+
       .projects {
         grid-template-columns: 1fr;
       }
 
+      .project.featured {
+        grid-column: span 1;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
       header {
         min-height: auto;
-        padding: 100px 0 80px;
       }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
       .container {
-        width: min(100% - 28px, 1050px);
+        width: min(100% - 28px, 1100px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 80px 0;
       }
 
       h1 {
-        font-size: 3.2rem;
+        font-size: 3.5rem;
       }
 
       main {
-        padding: 60px 0;
+        padding: 65px 0;
       }
 
       section {
-        margin-bottom: 65px;
+        margin-bottom: 75px;
       }
     }
   </style>
 </head>
 
+
 <body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <div class="logo">
+        DW<span>.</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
 
   <header>
     <div class="container">
+
       <div class="hero">
 
         <div class="eyebrow">
-          Linux • Networking • Systems
+          IT • Networking • Linux
         </div>
 
         <h1>
-          Darius Willits
+          Darius<br>
+          Willits
         </h1>
 
-        <div class="title">
-          Linux Systems Administrator in Training
+        <div class="hero-title">
+          IT &amp; Network Engineering
         </div>
 
-        <p class="intro">
-          I'm building my career in Linux systems administration and
-          networking, with hands-on training in Linux environments,
-          troubleshooting, networking fundamentals, hardware, and system
-          maintenance. My background in Navy fire-control systems has given
-          me a practical approach to troubleshooting, documentation, and
-          solving problems methodically.
+        <p class="hero-description">
+          Military-trained technical professional transitioning into civilian
+          IT and networking. I bring hands-on experience troubleshooting
+          computer-based systems, networked workstations, hardware, and
+          peripherals, along with current training in network engineering
+          and Linux environments.
         </p>
 
+        <div class="hero-links">
+          <a class="button primary" href="#projects">
+            View Projects
+          </a>
+
+          <a class="button" href="#experience">
+            Experience
+          </a>
+        </div>
+
       </div>
+
     </div>
   </header>
 
 
   <main class="container">
 
+
     <!-- ABOUT -->
+
     <section id="about">
 
-      <div class="section-heading">
+      <div class="section-header">
         <span class="section-number">01</span>
         <h2>About Me</h2>
       </div>
 
-      <p class="bio">
-        I'm currently training in network engineering while developing a
-        stronger focus on Linux systems administration. My experience includes
-        working with computer-based systems, networked workstations,
-        peripherals, Ethernet cabling, Linux troubleshooting, and structured
-        diagnostic processes. Through my training, I've been expanding that
-        foundation into system administration, networking, and automation.
-        I enjoy figuring out why something isn't working, breaking the problem
-        down into smaller pieces, and building a repeatable solution.
-      </p>
+      <div class="about-grid">
+
+        <div class="about-text">
+
+          <p>
+            My background is in the U.S. Navy as a Fire Control Technician,
+            where I worked with computer-based fire-control systems,
+            electronics, networked workstations, and associated equipment.
+            That experience taught me to approach technical problems
+            methodically and to troubleshoot systems under real-world
+            operational requirements.
+          </p>
+
+          <p>
+            I'm currently continuing that foundation through Network
+            Engineering training at CyberTex Institute of Technology.
+            My training has expanded my knowledge of networking, Linux,
+            hardware, routing and switching, VLANs, subnetting, and
+            troubleshooting.
+          </p>
+
+          <p>
+            I'm particularly interested in entry-level IT, networking,
+            systems administration, and infrastructure roles where I can
+            continue learning while contributing practical troubleshooting
+            and problem-solving skills.
+          </p>
+
+        </div>
+
+
+        <div class="career-card">
+
+          <div class="label">
+            Current Focus
+          </div>
+
+          <h3>
+            Network Engineering
+          </h3>
+
+          <p>
+            Building practical skills in networking, Linux, hardware,
+            troubleshooting, and infrastructure through hands-on training
+            and personal projects.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience">
+
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2>Experience</h2>
+      </div>
+
+
+      <div class="timeline">
+
+
+        <!-- NAVY -->
+
+        <div class="timeline-item">
+
+          <div class="timeline-date">
+            2017 — 2022
+          </div>
+
+          <h3>
+            Fire Control Technician
+          </h3>
+
+          <div class="timeline-location">
+            U.S. Navy
+          </div>
+
+          <ul>
+
+            <li>
+              Supported computer-based fire-control systems, electronics,
+              networked workstations, and related equipment.
+            </li>
+
+            <li>
+              Troubleshot hardware and software issues using structured
+              fault-isolation and diagnostic procedures.
+            </li>
+
+            <li>
+              Worked with LAN-connected systems, Ethernet cabling,
+              peripherals, and networked workstations.
+            </li>
+
+            <li>
+              Troubleshot Rocky Linux systems and printers as part of
+              equipment maintenance and support.
+            </li>
+
+            <li>
+              Provided one-on-one technical support to other personnel and
+              communicated troubleshooting steps clearly.
+            </li>
+
+            <li>
+              Created and used diagnostic flowcharts and technical
+              documentation to simplify troubleshooting and maintenance.
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <!-- CYBERTEX -->
+
+        <div class="timeline-item">
+
+          <div class="timeline-date">
+            Current
+          </div>
+
+          <h3>
+            Network Engineering Student
+          </h3>
+
+          <div class="timeline-location">
+            CyberTex Institute of Technology
+          </div>
+
+          <ul>
+
+            <li>
+              Hands-on training in networking, hardware, operating systems,
+              and infrastructure fundamentals.
+            </li>
+
+            <li>
+              Practiced router and switch configuration using Cisco Packet
+              Tracer.
+            </li>
+
+            <li>
+              Built routed networks and practiced subnetting using /26
+              networks.
+            </li>
+
+            <li>
+              Configured VLAN segmentation and worked with multiple
+              network segments.
+            </li>
+
+            <li>
+              Studied routing, switching, STP, TCP/IP, and network
+              troubleshooting.
+            </li>
+
+            <li>
+              Completed simulated labs covering practical IT and networking
+              scenarios.
+            </li>
+
+          </ul>
+
+        </div>
+
+
+      </div>
 
     </section>
 
 
     <!-- SKILLS -->
+
     <section id="skills">
 
-      <div class="section-heading">
-        <span class="section-number">02</span>
-        <h2>Skills</h2>
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2>Technical Skills</h2>
       </div>
 
       <div class="skills">
@@ -284,27 +746,36 @@
         <span class="skill">Rocky Linux</span>
         <span class="skill">Ubuntu</span>
         <span class="skill">Bash</span>
-        <span class="skill">System Administration</span>
-        <span class="skill">systemd</span>
-        <span class="skill">File Permissions</span>
-        <span class="skill">Linux Storage</span>
-        <span class="skill">Firewalls</span>
-        <span class="skill">Networking</span>
+
         <span class="skill">TCP/IP</span>
         <span class="skill">Subnetting</span>
         <span class="skill">VLANs</span>
-        <span class="skill">Routing &amp; Switching</span>
+        <span class="skill">Routing</span>
+        <span class="skill">Switching</span>
         <span class="skill">STP</span>
+
         <span class="skill">Ethernet Cabling</span>
+        <span class="skill">LAN Support</span>
+
         <span class="skill">Hardware Troubleshooting</span>
         <span class="skill">Printer Troubleshooting</span>
+        <span class="skill">System Troubleshooting</span>
+
+        <span class="skill">Linux Administration</span>
         <span class="skill">apt</span>
         <span class="skill">dnf</span>
-        <span class="skill">cron</span>
+        <span class="skill">systemd</span>
+        <span class="skill">File Permissions</span>
+        <span class="skill">Storage</span>
+
         <span class="skill">Git</span>
+        <span class="skill">cron</span>
+
+        <span class="skill">Cisco Packet Tracer</span>
         <span class="skill">Google Workspace</span>
-        <span class="skill">Troubleshooting</span>
+
         <span class="skill">Technical Documentation</span>
+        <span class="skill">Fault Isolation</span>
 
       </div>
 
@@ -312,82 +783,145 @@
 
 
     <!-- PROJECTS -->
+
     <section id="projects">
 
-      <div class="section-heading">
-        <span class="section-number">03</span>
-        <h2>Projects</h2>
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2>Projects &amp; Labs</h2>
       </div>
+
 
       <div class="projects">
 
 
-        <!-- PROJECT 1 -->
-        <article class="project">
+        <!-- NETWORKING PROJECT -->
+
+        <article class="project featured">
+
+          <div class="project-number">
+            PROJECT 01
+          </div>
 
           <h3>
-            Personal Portfolio
+            Cisco Packet Tracer Network Labs
           </h3>
 
           <p>
-            A lightweight portfolio built from scratch to document my Linux,
-            networking, and systems administration work without relying on
-            frameworks or hosted site builders.
+            Hands-on networking labs completed as part of my Network
+            Engineering training. These projects focus on understanding
+            how systems communicate and how networks are designed,
+            segmented, and troubleshot.
           </p>
 
           <ul>
-            <li>Built with semantic HTML and CSS</li>
-            <li>Responsive dark-theme design</li>
-            <li>No external dependencies or frameworks</li>
-            <li>Designed to be simple to maintain and deploy</li>
+
+            <li>
+              Designed and configured routed network topologies.
+            </li>
+
+            <li>
+              Practiced IPv4 subnetting using /26 networks.
+            </li>
+
+            <li>
+              Configured multiple VLANs for network segmentation.
+            </li>
+
+            <li>
+              Worked with switches, routers, and inter-network connectivity.
+            </li>
+
+            <li>
+              Practiced Spanning Tree Protocol concepts and troubleshooting.
+            </li>
+
           </ul>
 
         </article>
 
 
-        <!-- PROJECT 2 -->
+        <!-- LINUX -->
+
         <article class="project">
 
+          <div class="project-number">
+            PROJECT 02
+          </div>
+
           <h3>
-            Automated Backup System
+            Linux Administration Lab
           </h3>
 
           <p>
-            A Linux backup workflow designed to automate recurring backups
-            and reduce the amount of manual maintenance required to protect
-            important files.
+            Personal practice environment focused on building familiarity
+            with Linux administration and the day-to-day tasks involved in
+            maintaining a Linux system.
           </p>
 
           <ul>
-            <li>Bash scripting for backup automation</li>
-            <li>Scheduled execution with cron</li>
-            <li>Linux file and directory management</li>
-            <li>Logging and basic error handling</li>
-            <li>Repeatable system administration workflow</li>
+
+            <li>
+              Rocky Linux and Ubuntu environments.
+            </li>
+
+            <li>
+              Package management with apt and dnf.
+            </li>
+
+            <li>
+              User, group, and file-permission management.
+            </li>
+
+            <li>
+              Service management with systemd.
+            </li>
+
+            <li>
+              Basic networking and system troubleshooting.
+            </li>
+
           </ul>
 
         </article>
 
 
-        <!-- PROJECT 3 -->
+        <!-- TROUBLESHOOTING -->
+
         <article class="project">
 
+          <div class="project-number">
+            PROJECT 03
+          </div>
+
           <h3>
-            Self-Hosted AI Server
+            Troubleshooting &amp; Documentation
           </h3>
 
           <p>
-            A self-hosted AI environment built on Rocky Linux to practice
-            Linux administration, service management, networking, and
-            maintaining a server outside of a desktop environment.
+            A continuation of the structured troubleshooting approach I
+            developed working with Navy systems, applied to modern IT and
+            networking scenarios.
           </p>
 
           <ul>
-            <li>Rocky Linux server environment</li>
-            <li>Linux package and system management</li>
-            <li>Service configuration with systemd</li>
-            <li>Network configuration and troubleshooting</li>
-            <li>Hands-on server maintenance and administration</li>
+
+            <li>
+              Break problems into smaller, testable components.
+            </li>
+
+            <li>
+              Follow diagnostic steps rather than guessing at solutions.
+            </li>
+
+            <li>
+              Document troubleshooting procedures and results.
+            </li>
+
+            <li>
+              Create simplified troubleshooting references for repeat issues.
+            </li>
+
           </ul>
 
         </article>
@@ -397,16 +931,117 @@
 
     </section>
 
+
+    <!-- EDUCATION -->
+
+    <section id="education">
+
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2>Education &amp; Training</h2>
+      </div>
+
+
+      <div class="education">
+
+
+        <div class="education-card">
+
+          <h3>
+            Network Engineering
+          </h3>
+
+          <div class="school">
+            CyberTex Institute of Technology
+          </div>
+
+          <p>
+            Current training covering networking, hardware, operating
+            systems, routing and switching, VLANs, subnetting, and
+            troubleshooting.
+          </p>
+
+        </div>
+
+
+        <div class="education-card">
+
+          <h3>
+            Cisco Training
+          </h3>
+
+          <div class="school">
+            Cisco Networking Academy
+          </div>
+
+          <p>
+            Coursework including Computer Hardware Basics, Operating Systems
+            Basics, Linux Unhatched, Introduction to Cybersecurity, IoT,
+            and Hardware and Upgrade Support.
+          </p>
+
+        </div>
+
+
+        <div class="education-card">
+
+          <h3>
+            College Coursework
+          </h3>
+
+          <div class="school">
+            Austin Community College
+          </div>
+
+          <p>
+            College coursework completed between 2022 and 2025. Coursework
+            only; no degree claimed.
+          </p>
+
+        </div>
+
+
+        <div class="education-card">
+
+          <h3>
+            Self-Directed Learning
+          </h3>
+
+          <div class="school">
+            Linux &amp; IT Infrastructure
+          </div>
+
+          <p>
+            Continuing to build practical skills through Linux environments,
+            networking labs, troubleshooting exercises, and personal
+            infrastructure projects.
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
   </main>
 
 
+  <!-- FOOTER -->
+
   <footer>
+
     <div class="container">
+
       <p>
-        &copy; 2026 Darius Willits. Built from scratch with HTML and CSS.
+        © 2026 Darius Willits · IT &amp; Network Engineering
       </p>
+
     </div>
+
   </footer>
+
 
 </body>
 </html>
